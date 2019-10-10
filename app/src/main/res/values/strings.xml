@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Work Tracker</string>
+    <string name="desc_logo">Logo app provisorio</string>
+
+
+    <string name="usuario">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="lgn_btn">Iniciar sesión</string>
+    <string name="reg_btn">Registrate</string>
+
 </resources>
