@@ -7,5 +7,11 @@
     <string name="password">Contraseña</string>
     <string name="lgn_btn">Iniciar sesión</string>
     <string name="reg_btn">Registrate</string>
+    <string name="error_msg"></string>
+    <string name="login_error_1">Debes introducir tu usuario</string>
+    <string name="login_error_2">Debes introducir tu contraseña</string>
+    <string name="login_error_3">Usuario o contraseña incorrecta</string>
+
+    <string name="btn_nueva_tarea">Agregar tarea</string>
 
 </resources>

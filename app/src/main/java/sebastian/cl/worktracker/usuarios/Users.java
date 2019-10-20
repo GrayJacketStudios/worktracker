@@ -1,5 +1,7 @@
 package sebastian.cl.worktracker.usuarios;
 
+import android.app.Application;
+
 import java.util.ArrayList;
 
 public class Users {

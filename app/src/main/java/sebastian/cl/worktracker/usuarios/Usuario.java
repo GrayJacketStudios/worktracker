@@ -1,6 +1,6 @@
 package sebastian.cl.worktracker.usuarios;
-
-public class Usuario {
+import java.io.Serializable;
+public class Usuario implements Serializable {
 
     private int ID;
     private String password;
