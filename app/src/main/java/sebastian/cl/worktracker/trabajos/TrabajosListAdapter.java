@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -42,9 +43,21 @@ public class TrabajosListAdapter extends ArrayAdapter<Trabajos> {
 
         Trabajos trabajo = trabajosList.get(position);
 
+        view.setClickable(true);
+        view.setOnClickListener(myClickListener);
+        view.setTag(trabajo);
+
+
         textViewNombre.setText(trabajo.getTitulo());
         textViewDescri.setText(trabajo.getDescripcion());
 
         return view;
     }
+    public View.OnClickListener myClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            Trabajos trabajo = (Trabajos) v.getTag();
+            Toast.makeText(context.getApplicationContext(), "clickity: "+trabajo.getTitulo() ,
+                    Toast.LENGTH_LONG).show();
+        }
+    };
 }

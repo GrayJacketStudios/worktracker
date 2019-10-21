@@ -13,5 +13,5 @@
     <string name="login_error_3">Usuario o contraseña incorrecta</string>
 
     <string name="btn_nueva_tarea">Agregar tarea</string>
-
+    <string name="btn_eliminar_tarea">Eliminar Tareas</string>
 </resources>

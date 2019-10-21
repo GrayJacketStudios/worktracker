@@ -1,5 +1,6 @@
 package sebastian.cl.worktracker.usuarios;
 import java.io.Serializable;
+@SuppressWarnings("serial")
 public class Usuario implements Serializable {
 
     private int ID;
