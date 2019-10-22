@@ -14,4 +14,8 @@
 
     <string name="btn_nueva_tarea">Agregar tarea</string>
     <string name="btn_eliminar_tarea">Eliminar Tareas</string>
+
+    <string name="btnEdit">Editar</string>
+
+
 </resources>

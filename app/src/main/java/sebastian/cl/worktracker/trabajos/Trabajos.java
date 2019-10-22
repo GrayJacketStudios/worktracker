@@ -1,11 +1,13 @@
 package sebastian.cl.worktracker.trabajos;
 
-public class Trabajos {
-    int user_ID, trabajoID;
+import java.io.Serializable;
+@SuppressWarnings("serial")
+public class Trabajos implements Serializable {
+    private int user_ID, trabajoID;
 
 
 
-    String image, titulo, descripcion;
+    private String image, titulo, descripcion;
 
     public Trabajos(int ID, int user_ID, String image, String titulo, String descripcion) {
         this.trabajoID = ID;
