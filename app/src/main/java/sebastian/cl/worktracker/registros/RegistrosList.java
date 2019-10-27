@@ -2,30 +2,35 @@ package sebastian.cl.worktracker.registros;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import sebastian.cl.worktracker.R;
+import sebastian.cl.worktracker.helpers.SingletonListas;
 import sebastian.cl.worktracker.trabajos.Trabajos;
 
 public class RegistrosList extends AppCompatActivity {
 
-    List<Registro> registroList = new ArrayList<>();
     ListView listView;
     Trabajos trabajo;
+    int HorasTotales = 0;
+    RegistrosListAdapter adapter;
+    List<Registro> listaRegistro;
 
-    private List<Registro> registrosByTrabajos(List<Registro> registroList, int idTrabajo){
-        List<Registro> newList = new ArrayList<>();
+    private void registrosByTrabajos(List<Registro> registroList, int idTrabajo){
         for(Registro reg: registroList){
             if(reg.getTrabajoID() == idTrabajo){
-                newList.add(reg);
+                listaRegistro.add(reg);
+                HorasTotales += reg.getHoras_trabajadas();
             }
         }
-        return newList;
     }
 
 
@@ -36,22 +41,36 @@ public class RegistrosList extends AppCompatActivity {
         setContentView(R.layout.activity_registros_list);
 
         trabajo = (Trabajos) getIntent().getSerializableExtra("trabajo");
-
         listView = findViewById(R.id.LVRegistros);
 
-        registroList.add(new Registro(1,1,"15-10-2019","15-10-2019",35));
-        registroList.add(new Registro(2,1,"16-10-2019","16-10-2019",65));
-        registroList.add(new Registro(3,1,"18-10-2019","17-10-2019",185));
+        listaRegistro = new ArrayList<>();
+        registrosByTrabajos(SingletonListas.getInstance().registroList,trabajo.getTrabajoID());
 
+        adapter = new
+                RegistrosListAdapter(this, R.layout.registro_list_item,listaRegistro);
 
-        registroList.add(new Registro(4,2,"14-10-2019","12-10-2019",115));
-        registroList.add(new Registro(5,2,"17-10-2019","16-10-2019",85));
-
-        RegistrosListAdapter adapter = new
-                RegistrosListAdapter(this, R.layout.registro_list_item,registrosByTrabajos(registroList,trabajo.getTrabajoID()));
-
+        TextView txtHorasTrabajadas = (TextView) findViewById(R.id.txtHtotales);
+        txtHorasTrabajadas.setText(R.string.tTotal+Registro.minutosAHorasMinuto(HorasTotales));
         listView.setAdapter(adapter);
 
+    }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                registrosByTrabajos(SingletonListas.getInstance().registroList,trabajo.getTrabajoID());
+                TextView txtHorasTrabajadas = (TextView) findViewById(R.id.txtHtotales);
+                txtHorasTrabajadas.setText(R.string.tTotal+Registro.minutosAHorasMinuto(HorasTotales));
+                adapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+
+    public void OnCreaRegistro(View view){
+        Intent intent = new Intent(RegistrosList.this,CreateRegistro.class);
+        intent.putExtra("trabajoId",trabajo.getTrabajoID());
+        startActivityForResult(intent, 1);
     }
 }

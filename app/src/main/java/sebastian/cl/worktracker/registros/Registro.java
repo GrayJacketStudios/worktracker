@@ -6,9 +6,9 @@ import java.util.Date;
 public class Registro implements Serializable {
     private int id, trabajoID;
     private String f_creacion, f_actualizacion, f_trabajo;
-    private double horas_trabajadas;//Se manejara en minutos
+    private int horas_trabajadas;//Se manejara en minutos
 
-    public Registro(int id, int trabajoID, String f_creacion, String f_trabajo, double horas_trabajadas) {
+    public Registro(int id, int trabajoID, String f_creacion, String f_trabajo, int horas_trabajadas) {
         this.id = id;
         this.trabajoID = trabajoID;
         this.f_creacion = f_creacion;
@@ -48,11 +48,18 @@ public class Registro implements Serializable {
         this.f_trabajo = f_trabajo;
     }
 
-    public double getHoras_trabajadas() {
+    public int getHoras_trabajadas() {
         return horas_trabajadas;
     }
 
-    public void setHoras_trabajadas(double horas_trabajadas) {
+    public void setHoras_trabajadas(int horas_trabajadas) {
         this.horas_trabajadas = horas_trabajadas;
+    }
+
+
+    public static String minutosAHorasMinuto(int totalMinutos){
+        String minutos = Integer.toString(totalMinutos % 60);
+        minutos = minutos.length() == 1 ? "0" + minutos : minutos;
+        return (totalMinutos/60) + ":" + minutos;
     }
 }

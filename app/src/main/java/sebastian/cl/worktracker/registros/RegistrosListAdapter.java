@@ -38,7 +38,7 @@ public class RegistrosListAdapter extends ArrayAdapter<Registro> {
 
         Registro registro = registroList.get(position);
 
-        textViewTiempo.setText(registro.getHoras_trabajadas()+" minutos");
+        textViewTiempo.setText("Tiempo trabajado: "+registro.minutosAHorasMinuto(registro.getHoras_trabajadas()));
         textViewCreado.setText("Creada el: "+registro.getF_creacion());
         textViewActu.setText("Actualizada el: "+registro.getF_actualizacion());
         textViewTrabajado.setText("Trabajado el: "+registro.getF_trabajo());
