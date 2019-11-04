@@ -50,7 +50,7 @@ public class RegistrosList extends AppCompatActivity {
                 RegistrosListAdapter(this, R.layout.registro_list_item,listaRegistro);
 
         TextView txtHorasTrabajadas = (TextView) findViewById(R.id.txtHtotales);
-        txtHorasTrabajadas.setText(R.string.tTotal+Registro.minutosAHorasMinuto(HorasTotales));
+        txtHorasTrabajadas.setText(getString(R.string.tTotal,Registro.minutosAHorasMinuto(HorasTotales)));
         listView.setAdapter(adapter);
 
     }
@@ -61,7 +61,7 @@ public class RegistrosList extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 registrosByTrabajos(SingletonListas.getInstance().registroList,trabajo.getTrabajoID());
                 TextView txtHorasTrabajadas = (TextView) findViewById(R.id.txtHtotales);
-                txtHorasTrabajadas.setText(R.string.tTotal+Registro.minutosAHorasMinuto(HorasTotales));
+                txtHorasTrabajadas.setText(getString(R.string.tTotal,Registro.minutosAHorasMinuto(HorasTotales)));
                 adapter.notifyDataSetChanged();
             }
         }

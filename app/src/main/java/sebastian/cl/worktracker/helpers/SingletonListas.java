@@ -5,16 +5,19 @@ import java.util.List;
 
 import sebastian.cl.worktracker.registros.Registro;
 import sebastian.cl.worktracker.trabajos.Trabajos;
+import sebastian.cl.worktracker.usuarios.Usuario;
 
 public class SingletonListas {
     private static volatile SingletonListas SL = new SingletonListas();
 
     public List<Registro> registroList;
     public List<Trabajos> trabajosList;
+    public List<Usuario>  usuariosList;
 
     private SingletonListas(){
         registroList = new ArrayList<>();
         trabajosList = new ArrayList<>();
+        usuariosList = new ArrayList<>();
 
         trabajosList.add(new Trabajos(1,1,"","Proyecto INIF","Desarrollo front-end de INIF"));
         trabajosList.add(new Trabajos(2,1,"","back-end PUQTour","Desarrollo back-end de PUQTour"));

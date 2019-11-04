@@ -2,9 +2,10 @@
     <string name="app_name">Work Tracker</string>
     <string name="desc_logo">Logo app provisorio</string>
 
-    <string name="btnAnadir">Añadir</string>
-    <string name="btnCancelar">Cancelar</string>
 
+
+
+    //Strings de usuarios
     <string name="usuario">Usuario</string>
     <string name="password">Contraseña</string>
     <string name="lgn_btn">Iniciar sesión</string>
@@ -14,18 +15,33 @@
     <string name="login_error_2">Debes introducir tu contraseña</string>
     <string name="login_error_3">Usuario o contraseña incorrecta</string>
 
-    <string name="btn_nueva_tarea">Agregar tarea</string>
-    <string name="btn_eliminar_tarea">Eliminar Tareas</string>
+
 
     <string name="btnEdit">Editar</string>
+    <string name="btnAnadir">Añadir</string>
+    <string name="btnCancelar">Cancelar</string>
 
-    <string name="tituloCreaRegistro">Crea un registro</string>
+
+    //Strings relacionado a trabajos
     <string name="tituloCreaTrabajo">Crea un trabajo o proyecto</string>
 
-    <string name="tTotal">Tiempo total: </string>
 
+    <string name="nombreProyecto">Nombre del trabajo o proyecto</string>
+    <string name="descripcionProyecto">Drescripcion del proyecto</string>
+    <string name="objetivoTiempoSemanal">Objetivo de tiempo semanal</string>
+
+
+
+    //Strings tareas
+
+    <string name="btn_nueva_tarea">Agregar tarea</string>
+    <string name="btn_eliminar_tarea">Eliminar Tareas</string>
+    <string name="tTotal">Tiempo total: %1$s</string>
     <string name="ETFechaTrabajada">Fecha trabajada</string>
     <string name="ETTiempoTrabajado">Tiempo trabajado</string>
     <string name="txtCRTiempo">Tiempo trabajado en MINUTOS</string>
+
+    //Strings crear registro
+    <string name="tituloCreaRegistro">Crea un registro</string>
 
 </resources>

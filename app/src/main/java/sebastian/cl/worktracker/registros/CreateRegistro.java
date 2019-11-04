@@ -29,7 +29,6 @@ public class CreateRegistro extends AppCompatActivity {
         setContentView(R.layout.activity_create_registro);
 
         trabajoID = (Integer)getIntent().getIntExtra("trabajoId",0);
-
         etFechaTrabajo = (EditText) findViewById(R.id.ETFechaTrabajada);
 
         etFechaTrabajo.setOnClickListener(new View.OnClickListener() {

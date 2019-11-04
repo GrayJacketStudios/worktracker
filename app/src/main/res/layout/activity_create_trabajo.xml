@@ -17,6 +17,39 @@
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold" />
-    
 
+
+    <EditText
+        android:id="@+id/ETCTNombreTrabajo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nombreProyecto"
+        android:inputType="textShortMessage" />
+
+    <EditText
+        android:id="@+id/ETCTDescTrabajo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/descripcionProyecto"
+        android:inputType="textShortMessage"
+        />
+
+    <EditText
+        android:id="@+id/ETCTTiempoObjetivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/objetivoTiempoSemanal"
+        android:inputType="number"
+        />
+
+    <Button
+        android:onClick="addTrabajo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnAnadir"/>
+    <Button
+        android:onClick="OnCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnCancelar"/>
 </LinearLayout>

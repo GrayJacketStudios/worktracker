@@ -4,18 +4,17 @@ import android.app.Application;
 
 import java.util.ArrayList;
 
+import sebastian.cl.worktracker.helpers.SingletonListas;
+
 public class Users {
-    private ArrayList<Usuario> users;
     public Users(){
         super();
-        users = new ArrayList<Usuario>();
-
         //Aqui procedemos a asignar un usuario de prueba, ya que no conectaremos nada a BD aun.
-        users.add(new Usuario(1,"123456","foobar","a@a.com",true));
+        addUser("foobar","123456","a@a.com");
     }
     
     public Usuario iniciaSesion(String user, String pass){//Metodo para verificar inicio de sesion sin base de datos pero con  una lista.
-        for (Usuario us: users) {
+        for (Usuario us: SingletonListas.getInstance().usuariosList) {
             if(!us.getUsername().equals(user)){
                 continue;//No retornamos aun, pero nos saltamos los siguientes pasos del foreach para pasar al siguiente elemento.
             }
@@ -31,8 +30,8 @@ public class Users {
 
 
     public Usuario addUser(String user, String pass, String correo){
-        Usuario us = new Usuario((users.size()+1),pass,user,correo,true);
-        users.add(us);
+        Usuario us = new Usuario((SingletonListas.getInstance().usuariosList.size()+1),pass,user,correo,true);
+        SingletonListas.getInstance().usuariosList.add(us);
         return us;
     }
 
