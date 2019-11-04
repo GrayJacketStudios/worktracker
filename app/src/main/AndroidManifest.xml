@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".trabajos.CreateTrabajo"></activity>
+        <activity android:name=".usuarios.RegistroActivity"></activity>
+        <activity android:name=".trabajos.CreateTrabajo" />
         <activity android:name=".registros.CreateRegistro" />
         <activity android:name=".registros.RegistrosList" />
         <activity android:name=".trabajos.TrabajosList" />

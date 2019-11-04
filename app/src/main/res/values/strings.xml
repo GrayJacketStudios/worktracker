@@ -3,11 +3,11 @@
     <string name="desc_logo">Logo app provisorio</string>
 
 
-
-
     //Strings de usuarios
     <string name="usuario">Usuario</string>
     <string name="password">Contraseña</string>
+    <string name="password2">Repetir contraseña</string>
+    <string name="correo">Correo electronico</string>
     <string name="lgn_btn">Iniciar sesión</string>
     <string name="reg_btn">Registrate</string>
     <string name="error_msg"></string>
@@ -15,6 +15,14 @@
     <string name="login_error_2">Debes introducir tu contraseña</string>
     <string name="login_error_3">Usuario o contraseña incorrecta</string>
 
+    <string name="error_pass_match">Las contraseñas no coinciden</string>
+    <string name="error_pass_lenght">La contraseña debe tener más de 4 caracteres</string>
+    <string name="error_campos_vacios">Debes rellenar todos los campos</string>
+    <string name="error_email_exists">El correo electronico %1$s ya existe</string>
+    <string name="error_username_exists">El nombre de usuario %1$s ya existe</string>
+
+    <string name="usuario_agregado">Usuario registrado con exito</string>
+    <string name="registro_cancelado">Se ha cancelado el registro</string>
 
 
     <string name="btnEdit">Editar</string>
@@ -29,7 +37,6 @@
     <string name="nombreProyecto">Nombre del trabajo o proyecto</string>
     <string name="descripcionProyecto">Drescripcion del proyecto</string>
     <string name="objetivoTiempoSemanal">Objetivo de tiempo semanal</string>
-
 
 
     //Strings tareas

@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import sebastian.cl.worktracker.trabajos.TrabajosList;
+import sebastian.cl.worktracker.usuarios.RegistroActivity;
 import sebastian.cl.worktracker.usuarios.Users;
 import sebastian.cl.worktracker.usuarios.Usuario;
 
@@ -44,5 +46,23 @@ public class MainActivity extends AppCompatActivity  {
         Intent intent = new Intent(MainActivity.this, TrabajosList.class);
         intent.putExtra("user", (Usuario) user);
         startActivity(intent);
+    }
+
+    public void onRegistrate(View view){
+        Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+        startActivityForResult(intent, 5);
+    }
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 5){
+            if(resultCode == RESULT_OK){
+                Toast.makeText(this, R.string.usuario_agregado, Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(this, R.string.registro_cancelado, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

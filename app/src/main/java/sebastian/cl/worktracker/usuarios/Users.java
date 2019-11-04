@@ -29,10 +29,27 @@ public class Users {
     }
 
 
-    public Usuario addUser(String user, String pass, String correo){
+    public static void addUser(String user, String pass, String correo){
         Usuario us = new Usuario((SingletonListas.getInstance().usuariosList.size()+1),pass,user,correo,true);
         SingletonListas.getInstance().usuariosList.add(us);
-        return us;
+    }
+
+    public static boolean checkEmail(String email){
+        for(Usuario us: SingletonListas.getInstance().usuariosList) {
+            if(us.getCorreo().equals(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkUsername(String username){
+        for(Usuario us: SingletonListas.getInstance().usuariosList) {
+            if(us.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
     }
 
 
