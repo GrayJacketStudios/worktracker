@@ -29,14 +29,21 @@
     <string name="btnAnadir">Añadir</string>
     <string name="btnCancelar">Cancelar</string>
 
+    <string name="btnGuardarCambios">Guardar cambios</string>
+
 
     //Strings relacionado a trabajos
     <string name="tituloCreaTrabajo">Crea un trabajo o proyecto</string>
 
 
     <string name="nombreProyecto">Nombre del trabajo o proyecto</string>
-    <string name="descripcionProyecto">Drescripcion del proyecto</string>
+    <string name="descripcionProyecto">Descripcion del proyecto</string>
     <string name="objetivoTiempoSemanal">Objetivo de tiempo semanal</string>
+    <string name="txtEdit">Editando tarea: %1$s</string>
+    <string name="btnEliminarTrabajo">Eliminar trabajo</string>
+
+
+
 
 
     //Strings tareas
@@ -47,6 +54,7 @@
     <string name="ETFechaTrabajada">Fecha trabajada</string>
     <string name="ETTiempoTrabajado">Tiempo trabajado</string>
     <string name="txtCRTiempo">Tiempo trabajado en MINUTOS</string>
+
 
     //Strings crear registro
     <string name="tituloCreaRegistro">Crea un registro</string>

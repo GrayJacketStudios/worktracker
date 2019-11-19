@@ -59,6 +59,12 @@ public class TrabajosList extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         }
+        if (requestCode == 5) {
+            if (resultCode == RESULT_OK) {
+                trabajosByUsers(SingletonListas.getInstance().trabajosList, user.getID());
+                adapter.notifyDataSetChanged();
+            }
+        }
 
     }
 
