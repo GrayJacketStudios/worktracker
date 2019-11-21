@@ -25,6 +25,7 @@ public class RegistrosList extends AppCompatActivity {
     List<Registro> listaRegistro;
 
     private void registrosByTrabajos(List<Registro> registroList, int idTrabajo){
+        listaRegistro.clear();
         for(Registro reg: registroList){
             if(reg.getTrabajoID() == idTrabajo){
                 listaRegistro.add(reg);
@@ -57,7 +58,7 @@ public class RegistrosList extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
+        if (requestCode == 1 || requestCode == 5) {
             if (resultCode == RESULT_OK) {
                 registrosByTrabajos(SingletonListas.getInstance().registroList,trabajo.getTrabajoID());
                 TextView txtHorasTrabajadas = (TextView) findViewById(R.id.txtHtotales);
@@ -65,6 +66,7 @@ public class RegistrosList extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         }
+
     }
 
 

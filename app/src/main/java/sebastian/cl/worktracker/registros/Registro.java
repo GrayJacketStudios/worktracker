@@ -16,6 +16,8 @@ public class Registro implements Serializable {
         this.horas_trabajadas = horas_trabajadas;
     }
 
+    public int getID(){return id; }
+
     public int getTrabajoID() {
         return trabajoID;
     }

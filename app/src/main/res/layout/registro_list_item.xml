@@ -60,7 +60,8 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLastUpdate"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

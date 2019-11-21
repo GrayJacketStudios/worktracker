@@ -50,6 +50,13 @@ public class EditTrabajo extends AppCompatActivity {
 
     }
 
+    public void onCancelarEdit(View view){
+        setResult(RESULT_CANCELED);
+        finish();
+        return;
+
+    }
+
     public void onEliminar(View view){
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Eliminar tarea");
