@@ -7,14 +7,36 @@ public class Usuario implements Serializable {
     private String password;
     private String username;
     private String correo;
+    private String nombre;
     private boolean habilitado;
 
-    public Usuario(int id, String password, String username, String correo, boolean habilitado) {
-        ID = id;
+
+
+    public Usuario(String password, String username, String correo, boolean habilitado) {
         this.password = password;
         this.username = username;
         this.correo = correo;
         this.habilitado = habilitado;
+    }
+
+    public Usuario(Integer ID, String password, String username, String correo, boolean habilitado) {
+        this.ID = ID;
+        this.password = password;
+        this.username = username;
+        this.correo = correo;
+        this.habilitado = habilitado;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public int getID(){

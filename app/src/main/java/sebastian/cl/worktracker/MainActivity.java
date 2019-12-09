@@ -4,29 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import sebastian.cl.worktracker.trabajos.TrabajosList;
 import sebastian.cl.worktracker.usuarios.RegistroActivity;
-import sebastian.cl.worktracker.usuarios.Users;
 import sebastian.cl.worktracker.usuarios.Usuario;
+import sebastian.cl.worktracker.usuarios.UsuarioDatabaseHelper;
 
 public class MainActivity extends AppCompatActivity  {
-    protected Users us;
     protected Usuario user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        us = new Users();
     }
 
     public void logear(View view){
+
+        UsuarioDatabaseHelper usDB = new UsuarioDatabaseHelper(this);
+
+
+
         EditText ETUsuario = (EditText)findViewById(R.id.txtUsername);
         EditText ETPassword = (EditText)findViewById(R.id.txtPassword);
         TextView TVError = (TextView)findViewById(R.id.txtErrorMsg);
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity  {
             TVError.setText(R.string.login_error_2);
             return;
         }
-        if((user = us.iniciaSesion(ETUsuario.getText().toString(),ETPassword.getText().toString())) == null){//No se ha encontrado al usuario
+        if((user = usDB.iniciaSesion(ETUsuario.getText().toString(), ETPassword.getText().toString())) == null){//No se ha encontrado al usuario
             TVError.setText(R.string.login_error_3);
             return;
         }

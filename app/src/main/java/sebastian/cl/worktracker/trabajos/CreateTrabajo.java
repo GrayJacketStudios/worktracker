@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import sebastian.cl.worktracker.R;
 import sebastian.cl.worktracker.helpers.SingletonListas;
@@ -26,6 +27,12 @@ public class CreateTrabajo extends AppCompatActivity {
         EditText ETNombreTrabajo = (EditText)findViewById(R.id.ETCTNombreTrabajo);
         EditText ETDescriTrabajo = (EditText)findViewById(R.id.ETCTDescTrabajo);
         EditText ETTiempoObjetivo = (EditText)findViewById(R.id.ETCTTiempoObjetivo);
+
+        if(ETNombreTrabajo.getText().toString().equals("")){
+            Toast.makeText(this, "Debes rellenar los datos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Trabajos trabajo = new Trabajos(
                 (SingletonListas.getInstance().trabajosList.size()+1),
                 userId,

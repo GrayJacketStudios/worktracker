@@ -19,6 +19,11 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public void onRegistro(View view){
+
+        UsuarioDatabaseHelper usDB = new UsuarioDatabaseHelper(this);
+
+
+
         EditText userText = (EditText) findViewById(R.id.ETRUsuario);
         EditText correoText = (EditText) findViewById(R.id.ETRCorreo);
         EditText pass1 = (EditText) findViewById(R.id.ETRPass1);
@@ -40,18 +45,21 @@ public class RegistroActivity extends AppCompatActivity {
             error.setText(R.string.error_campos_vacios);
             return;
         }
-        if(Users.checkEmail(correoText.getText().toString())){
+        if(usDB.userExist("correo",correoText.getText().toString())){
             error.setText(getString(R.string.error_email_exists,correoText.getText().toString()));
             return;
         }
-        if(Users.checkUsername(userText.getText().toString())){
+        if(usDB.userExist("usuario",userText.getText().toString())){
             error.setText(getString(R.string.error_username_exists,userText.getText().toString()));
             return;
         }
 
-        //Ya pasamos todas las verificaciones, es seguro crear nuestro usuario!
-        Users.addUser(userText.getText().toString(),pass1.getText().toString(),correoText.getText().toString());
 
+
+        //Ya pasamos todas las verificaciones, es seguro crear nuestro usuario!
+        Usuario us = new Usuario(pass1.getText().toString(),userText.getText().toString(), correoText.getText().toString(), true);
+        //Users.addUser(userText.getText().toString(),pass1.getText().toString(),correoText.getText().toString());
+        usDB.registrarUsuario(us);
         setResult(RESULT_OK);
         finish();
 

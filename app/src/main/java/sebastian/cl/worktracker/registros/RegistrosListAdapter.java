@@ -47,7 +47,7 @@ public class RegistrosListAdapter extends ArrayAdapter<Registro> {
 
         textViewTiempo.setText("Tiempo trabajado: "+registro.minutosAHorasMinuto(registro.getHoras_trabajadas()));
         textViewCreado.setText("Creada el: "+registro.getF_creacion());
-        textViewActu.setText("Actualizada el: "+registro.getF_actualizacion());
+        //textViewActu.setText("Actualizada el: "+registro.getF_actualizacion());
         textViewTrabajado.setText("Trabajado el: "+registro.getF_trabajo());
 
         editButton.setOnClickListener(new View.OnClickListener() {

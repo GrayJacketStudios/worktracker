@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -61,6 +62,11 @@ public class CreateRegistro extends AppCompatActivity {
     public void addRegistro(View view){
         EditText fechaEditText = (EditText) findViewById(R.id.ETFechaTrabajada);
         EditText tiempoEditText = (EditText) findViewById(R.id.ETTiempoTrabajado);
+
+        if(fechaEditText.getText().toString().equals("")){
+            Toast.makeText(this, "Debes rellenar los datos", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Registro regi = new Registro(
                 (SingletonListas.getInstance().registroList.size()+1),
                 trabajoID,
