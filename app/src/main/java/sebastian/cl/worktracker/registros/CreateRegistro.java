@@ -15,7 +15,6 @@ import java.time.format.DateTimeFormatter;
 
 import sebastian.cl.worktracker.R;
 import sebastian.cl.worktracker.helpers.DatePickerFragment;
-import sebastian.cl.worktracker.helpers.SingletonListas;
 
 public class CreateRegistro extends AppCompatActivity {
     EditText etFechaTrabajo;

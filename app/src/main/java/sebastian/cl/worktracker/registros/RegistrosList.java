@@ -9,11 +9,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import sebastian.cl.worktracker.R;
-import sebastian.cl.worktracker.helpers.SingletonListas;
 import sebastian.cl.worktracker.trabajos.Trabajos;
 
 public class RegistrosList extends AppCompatActivity {
@@ -22,12 +20,20 @@ public class RegistrosList extends AppCompatActivity {
     Trabajos trabajo;
     int HorasTotales = 0;
     RegistrosListAdapter adapter;
-    List<Registro> listaRegistro;
+    List<Registro> listaRegistro = new ArrayList<>();
 
 
     private void cargaListaRegistro(){
         RegistroDatabaseHelper regDB = new RegistroDatabaseHelper(this);
         this.listaRegistro = regDB.getRegistros(this.listaRegistro,trabajo.getTrabajoID());
+        this.setHorasTotales();
+    }
+
+    private void setHorasTotales(){
+        this.HorasTotales = 0;
+        for(Registro reg: this.listaRegistro){
+            this.HorasTotales += reg.getHoras_trabajadas();
+        }
     }
 
 

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ListView;
 
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sebastian.cl.worktracker.R;
-import sebastian.cl.worktracker.helpers.SingletonListas;
 import sebastian.cl.worktracker.usuarios.Usuario;
 
 public class TrabajosList extends AppCompatActivity {

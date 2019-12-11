@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import sebastian.cl.worktracker.R;
-import sebastian.cl.worktracker.helpers.SingletonListas;
 
 import sebastian.cl.worktracker.helpers.DatePickerFragment;
 

@@ -49,7 +49,7 @@ public class RegistroDatabaseHelper extends SQLiteOpenHelper {
         registros.clear();
         Cursor cursor = DB.query("registros",
                 new String[]{"ID","f_creacion","f_actualizacion","f_trabajada", "horas_trabajadas"},
-                "user_ID = "+trabajoID,
+                "trabajo_ID = "+trabajoID,
                 null,
                 null,
                 null,
@@ -59,7 +59,7 @@ public class RegistroDatabaseHelper extends SQLiteOpenHelper {
 
         do{
             try{
-                registros.add(new Registro(cursor.getInt(0), trabajoID, cursor.getString(1),cursor.getString(2),cursor.getInt(3)));
+                registros.add(new Registro(cursor.getInt(0), trabajoID, cursor.getString(2),cursor.getString(3),cursor.getInt(4)));
             }catch (Exception e){
 
             }
@@ -87,7 +87,7 @@ public class RegistroDatabaseHelper extends SQLiteOpenHelper {
 
 
     public boolean cambiarRegistro(Registro reg){
-        String sqlText = "UPDATE registros SET f_actualizacion = ?, f_trabajada = ?, horas_trabadas = ? WHERE ID = ?";
+        String sqlText = "UPDATE registros SET f_actualizacion = ?, f_trabajada = ?, horas_trabajadas = ? WHERE ID = ?";
         Object[] argumentos = new Object[]{formatter.format(Instant.now()), reg.getF_trabajo(), reg.getHoras_trabajadas(),reg.getID()};
         try{
             getWritableDatabase().execSQL(sqlText,argumentos);
