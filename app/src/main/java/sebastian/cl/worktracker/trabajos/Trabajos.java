@@ -17,6 +17,13 @@ public class Trabajos implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public Trabajos(int user_ID, String image, String titulo, String descripcion) {
+        this.user_ID = user_ID;
+        this.image = image;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+    }
+
     public int getTrabajoID() {
         return trabajoID;
     }

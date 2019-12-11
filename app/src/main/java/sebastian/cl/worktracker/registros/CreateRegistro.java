@@ -68,7 +68,6 @@ public class CreateRegistro extends AppCompatActivity {
             return;
         }
         Registro regi = new Registro(
-                (SingletonListas.getInstance().registroList.size()+1),
                 trabajoID,
                 formatter.format(Instant.now())
                 ,
@@ -76,8 +75,9 @@ public class CreateRegistro extends AppCompatActivity {
                 fechaEditText.getText().toString(),
                 Integer.parseInt(tiempoEditText.getText().toString())
         );
+        RegistroDatabaseHelper regDB = new RegistroDatabaseHelper(this);
+        regDB.addRegistro(regi);
 
-        SingletonListas.getInstance().registroList.add(regi);
         setResult(RESULT_OK);
         finish();
 

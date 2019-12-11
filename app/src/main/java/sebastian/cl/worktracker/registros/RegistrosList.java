@@ -24,14 +24,10 @@ public class RegistrosList extends AppCompatActivity {
     RegistrosListAdapter adapter;
     List<Registro> listaRegistro;
 
-    private void registrosByTrabajos(List<Registro> registroList, int idTrabajo){
-        listaRegistro.clear();
-        for(Registro reg: registroList){
-            if(reg.getTrabajoID() == idTrabajo){
-                listaRegistro.add(reg);
-                HorasTotales += reg.getHoras_trabajadas();
-            }
-        }
+
+    private void cargaListaRegistro(){
+        RegistroDatabaseHelper regDB = new RegistroDatabaseHelper(this);
+        this.listaRegistro = regDB.getRegistros(this.listaRegistro,trabajo.getTrabajoID());
     }
 
 
@@ -44,8 +40,8 @@ public class RegistrosList extends AppCompatActivity {
         trabajo = (Trabajos) getIntent().getSerializableExtra("trabajo");
         listView = findViewById(R.id.LVRegistros);
 
-        listaRegistro = new ArrayList<>();
-        registrosByTrabajos(SingletonListas.getInstance().registroList,trabajo.getTrabajoID());
+        cargaListaRegistro();
+
 
         adapter = new
                 RegistrosListAdapter(this, R.layout.registro_list_item,listaRegistro);
@@ -60,7 +56,7 @@ public class RegistrosList extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 || requestCode == 5) {
             if (resultCode == RESULT_OK) {
-                registrosByTrabajos(SingletonListas.getInstance().registroList,trabajo.getTrabajoID());
+                cargaListaRegistro();
                 TextView txtHorasTrabajadas = (TextView) findViewById(R.id.txtHtotales);
                 txtHorasTrabajadas.setText(getString(R.string.tTotal,Registro.minutosAHorasMinuto(HorasTotales)));
                 adapter.notifyDataSetChanged();

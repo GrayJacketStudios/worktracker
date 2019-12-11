@@ -33,7 +33,25 @@ public class EditTrabajo extends AppCompatActivity {
     }
 
     public void onGuardar(View view){
+        TrabajoDatabaseHelper traDB = new TrabajoDatabaseHelper(this);
+        trabajo.setDescripcion(descripcionEditText.getText().toString());
+        trabajo.setTitulo(nombreEditText.getText().toString());
+        try{
+            traDB.cambiarTrabajo(trabajo);
+            setResult(RESULT_OK);
+            Toast.makeText(this, "Cambios guardados con exito", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }catch (Exception e){
+            setResult(RESULT_CANCELED);
+            Toast.makeText(this, "Error al guardar los cambios.", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
+
+
+        /*Obsoleto, codigo de legado :)
         for(Trabajos tr: SingletonListas.getInstance().trabajosList){
             if(tr.getTrabajoID() == trabajo.getTrabajoID()){
                 tr.setTitulo(nombreEditText.getText().toString());
@@ -44,7 +62,9 @@ public class EditTrabajo extends AppCompatActivity {
                 return;
             }
         }
-        setResult(RESULT_CANCELED);
+
+        */
+        //setResult(RESULT_CANCELED);
 
 
 
@@ -57,6 +77,15 @@ public class EditTrabajo extends AppCompatActivity {
 
     }
 
+    public void eliminarTrabajo(int ID){
+        TrabajoDatabaseHelper traDB = new TrabajoDatabaseHelper(this);
+        traDB.eliminarTrabajo(ID);
+        setResult(RESULT_OK);
+        Toast.makeText(EditTrabajo.this, "Trabajo eliminado", Toast.LENGTH_SHORT).show();
+        finish();
+        return;
+    }
+
     public void onEliminar(View view){
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Eliminar tarea");
@@ -64,12 +93,7 @@ public class EditTrabajo extends AppCompatActivity {
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Eliminar",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        for(int i = 0; i < SingletonListas.getInstance().trabajosList.size(); i++){
-                            if(trabajo.getTrabajoID() == SingletonListas.getInstance().trabajosList.get(i).getTrabajoID()){
-                                SingletonListas.getInstance().trabajosList.remove(i);
-                                break;
-                            }
-                        }
+                        eliminarTrabajo(trabajo.getTrabajoID());
 
                         setResult(RESULT_OK);
                         Toast.makeText(EditTrabajo.this, "Trabajo eliminado", Toast.LENGTH_SHORT).show();

@@ -34,15 +34,27 @@ public class CreateTrabajo extends AppCompatActivity {
         }
 
         Trabajos trabajo = new Trabajos(
-                (SingletonListas.getInstance().trabajosList.size()+1),
                 userId,
                 "",
                 ETNombreTrabajo.getText().toString(),
                 ETDescriTrabajo.getText().toString()
         );
-        SingletonListas.getInstance().trabajosList.add(trabajo);
-        setResult(RESULT_OK);
-        finish();
+        try{
+            TrabajoDatabaseHelper trabDB = new TrabajoDatabaseHelper(this);
+            trabDB.addTrabajo(trabajo);
+            Toast.makeText(this, "Trabajo añadido con exito", Toast.LENGTH_SHORT).show();
+            setResult(RESULT_OK);
+            finish();
+        }catch (Exception e){
+            Toast.makeText(this, "Error al añadir el trabajo", Toast.LENGTH_SHORT).show();
+            setResult(RESULT_CANCELED);
+            finish();
+            return;
+        }
+
+
+        //SingletonListas.getInstance().trabajosList.add(trabajo);
+
     }
 
     public void OnCancelar(View view){

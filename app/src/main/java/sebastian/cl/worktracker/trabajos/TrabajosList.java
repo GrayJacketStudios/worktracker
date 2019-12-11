@@ -22,7 +22,9 @@ public class TrabajosList extends AppCompatActivity {
     Usuario user;
     List<Trabajos> listaTrabajos;
     TrabajosListAdapter adapter;
-    
+
+
+    /*Obsoleto!
     protected void trabajosByUsers(List<Trabajos> trabajosList, int user_ID){
         listaTrabajos.clear();
         for (Trabajos tr: trabajosList) {
@@ -31,6 +33,13 @@ public class TrabajosList extends AppCompatActivity {
             }
         }
     }
+    */
+
+    protected void cargaListaTrabajos(){
+        TrabajoDatabaseHelper trabDB = new TrabajoDatabaseHelper(this);
+        this.listaTrabajos = trabDB.getTrabajos(this.listaTrabajos, user.getID());
+    }
+
 
 
     @Override
@@ -39,10 +48,10 @@ public class TrabajosList extends AppCompatActivity {
         setContentView(R.layout.activity_trabajos_list);
         user = (Usuario)getIntent().getSerializableExtra("user");
         listView = (ListView) findViewById(R.id.LVtrabajos);
+        this.listaTrabajos = new ArrayList<>();
+        cargaListaTrabajos();
 
-        listaTrabajos = new ArrayList<>();
-
-        trabajosByUsers(SingletonListas.getInstance().trabajosList,user.getID());
+        //trabajosByUsers(SingletonListas.getInstance().trabajosList,user.getID());
 
         adapter = new
                 TrabajosListAdapter(this,R.layout.trabajos_list_item,listaTrabajos);
@@ -55,13 +64,13 @@ public class TrabajosList extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                trabajosByUsers(SingletonListas.getInstance().trabajosList, user.getID());
+                cargaListaTrabajos();
                 adapter.notifyDataSetChanged();
             }
         }
         if (requestCode == 5) {
             if (resultCode == RESULT_OK) {
-                trabajosByUsers(SingletonListas.getInstance().trabajosList, user.getID());
+                cargaListaTrabajos();
                 adapter.notifyDataSetChanged();
             }
         }

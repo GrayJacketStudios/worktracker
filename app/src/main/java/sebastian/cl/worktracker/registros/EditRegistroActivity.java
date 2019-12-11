@@ -56,7 +56,18 @@ public class EditRegistroActivity extends AppCompatActivity {
 
 
     public void onGuardar(View view){
-        for(Registro reg: SingletonListas.getInstance().registroList){
+        registro.setF_trabajo(FechaTrabajadaEditText.getText().toString());
+        registro.setHoras_trabajadas(Integer.parseInt(TiempoTrabajadoEditText.getText().toString()));
+        RegistroDatabaseHelper regDB = new RegistroDatabaseHelper(this);
+        regDB.cambiarRegistro(registro);
+        setResult(RESULT_OK);
+        Toast.makeText(this, "Cambios guardados con exito", Toast.LENGTH_SHORT).show();
+        finish();
+        return;
+
+
+        //Obsoleto
+        /*for(Registro reg: SingletonListas.getInstance().registroList){
             if(reg.getID() == registro.getID()){
                 reg.setF_trabajo(FechaTrabajadaEditText.getText().toString());
                 reg.setHoras_trabajadas(Integer.parseInt(TiempoTrabajadoEditText.getText().toString()));
@@ -68,6 +79,7 @@ public class EditRegistroActivity extends AppCompatActivity {
         }
         finish();
         return;
+        */
     }
 
 
